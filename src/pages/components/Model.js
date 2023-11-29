@@ -9,7 +9,11 @@ import { directive } from "@babel/types";
 export default function Model(props) {
   const ref = useRef();
     // Subscribe this component to the render-loop, rotate the mesh every frame
-    useFrame((state, delta) => (ref.current.rotation.y += delta));
+    // useFrame((state, delta) => (ref.current.rotation.y += delta));
+    useFrame(() => {
+      // ref.current.rotation.x += 0.005;
+      ref.current.rotation.y += 0.003;
+    });
     const keyboardMap = [
         { name: 'forward', keys: ['ArrowUp', 'KeyW'] },
         { name: 'backward', keys: ['ArrowDown', 'KeyS'] },
@@ -27,11 +31,11 @@ export default function Model(props) {
             <Physics timeStep="vary">
               <KeyboardControls map={keyboardMap}>
                 <Controller maxVelLimit={5}>
-                  <Gltf castShadow receiveShadow scale={1} position={[0, 0, 0]} src="/shiba.glb" />
+                  <Gltf castShadow receiveShadow scale={1} position={[0, 0.1, 0]} src="/shiba.glb" />
                 </Controller>
               </KeyboardControls>
               <RigidBody type="fixed" colliders="trimesh">
-                <Gltf castShadow receiveShadow rotation={[0, 0, 0]} scale={5} src="/world.glb" />
+                <Gltf castShadow receiveShadow position={[0, 0, 0]} rotation={[0, 0, 0]} scale={5} src="/world.glb" />
               </RigidBody>
             </Physics>
         </mesh>
