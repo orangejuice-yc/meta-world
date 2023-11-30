@@ -8,7 +8,7 @@ export default function World() {
   const [isAutoRotate, setAutoRotate] = useState(true)
   const [cameraPosition, setCameraPosition] = useState([100, 100, 100]);
   const TogoCameraView = () => {
-    setCameraPosition([10, 10, 10])
+    setCameraPosition([50, 50, 50])
     setAutoRotate(false)
   }
   return (
