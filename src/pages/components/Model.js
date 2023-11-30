@@ -1,10 +1,23 @@
 import React, { useRef, useState } from "react";
 import { useFrame } from '@react-three/fiber'
-import { Gltf, Environment, Fisheye, PerspectiveCamera, KeyboardControls, CameraControls, OrbitControls } from '@react-three/drei'
+import { Gltf, Environment, Fisheye, PerspectiveCamera, KeyboardControls, CameraControls, OrbitControls,Html } from '@react-three/drei'
 import { Physics, RigidBody } from '@react-three/rapier'
 import Controller from 'ecctrl'
 import { directive } from "@babel/types";
 import * as THREE from 'three';
+function Annotation({ children, ...props }) {
+  return (
+    <Html
+      {...props}
+      transform
+      occlude="blending"
+    >
+      <div className="annotation" onClick={() => console.log('.')}>
+        {children}
+      </div>
+    </Html>
+  )
+}
 
 export default function Model(props) {
   // const CameraRef = useRef();
@@ -67,6 +80,9 @@ export default function Model(props) {
         <Gltf  onPointerOver={(event) => { console.log(111111); setHover(true) }}
           onPointerOut={(event) => setHover(false)} position={[10, 10, 10]} rotation={[0, 0, 0]} scale={10} src={hovered ? "/glb/bubble_hover.glb" : "/glb/bubble_normal.glb"} />
       </mesh>
+      {/* <Annotation position={[20, 20, 20]}>
+        <span style={{ fontSize: '1.5em' }}>🌕</span> Aglaia
+      </Annotation> */}
     </>
   )
 }
