@@ -8,17 +8,18 @@ import Env from './Env'
 export default function CanvasMap({isAutoRotate,cameraPosition}) {
   return (
       <Canvas style={{ width: '100vw', height: '100vh' }} camera={{ position: [500, 500, 500], fov: 55, near: 0.1 }}>
+        <color attach="background" args={['skyblue']} />
         <Model />
         <Env />
         <OrbitControls
           autoRotate={isAutoRotate}
-          autoRotateSpeed={2}
+          autoRotateSpeed={1}
           enablePan={false}
           enableZoom={false}
-          minPolarAngle={0}
-          maxPolarAngle={Math.PI / 4}
+          minPolarAngle={Math.PI / 4.2}
+          maxPolarAngle={Math.PI / 2.2}
         />
-        <axesHelper args={[100]} />
+        <axesHelper args={[500]} />
         <PerspectiveCamera
           makeDefault  // 使摄像头成为默认相机
           position={cameraPosition}  // 设置摄像头位置
