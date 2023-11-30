@@ -28,12 +28,12 @@ export default function Model(props) {
   useFrame(() => {
     if (characterRef.current) {
       const { x, y, z } = characterRef.current.position;
-         // 检查当前位置和之前的位置是否相同
-         if (x !== previousPosition.x || y !== previousPosition.y || z !== previousPosition.z) {
-          // 位置已更新，执行操作并更新前一帧位置
-          console.log('对象的位置信息:', { x, y, z });
-          setPreviousPosition({ x, y, z });
-        }
+      // 检查当前位置和之前的位置是否相同
+      if (x !== previousPosition.x || y !== previousPosition.y || z !== previousPosition.z) {
+        // 位置已更新，执行操作并更新前一帧位置
+        console.log('对象的位置信息:', { x, y, z });
+        setPreviousPosition({ x, y, z });
+      }
     }
   });
 
@@ -51,11 +51,9 @@ export default function Model(props) {
           <Gltf castShadow receiveShadow position={[0, 0, 0]} rotation={[0, 0, 0]} scale={4} src="/glb/land.glb" />
         </RigidBody>
       </Physics>
-      <mesh
-       
-      >
-      <Gltf onPointerOver={(event) => {console.log(111111);setHover(true)}}
-       onPointerOut={(event) => setHover(false)} position={[10, 10, 10]} rotation={[0, 0, 0]} scale={10} src={hovered ? "/glb/bubble_hover.glb" : "/glb/bubble_normal.glb"} />
+      <mesh>
+        <Gltf onPointerOver={(event) => { console.log(111111); setHover(true) }}
+          onPointerOut={(event) => setHover(false)} position={[10, 10, 10]} rotation={[0, 0, 0]} scale={10} src={hovered ? "/glb/bubble_hover.glb" : "/glb/bubble_normal.glb"} />
       </mesh>
     </>
   )
