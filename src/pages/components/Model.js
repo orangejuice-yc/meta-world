@@ -2,7 +2,8 @@ import React, { useRef, useState } from "react";
 import { useFrame } from '@react-three/fiber'
 import { Gltf, Environment, Fisheye, PerspectiveCamera, KeyboardControls, CameraControls, OrbitControls,Html } from '@react-three/drei'
 import { Physics, RigidBody } from '@react-three/rapier'
-import Controller from 'ecctrl'
+// import Controller from 'ecctrl'
+import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import { directive } from "@babel/types";
 import * as THREE from 'three';
 function Annotation({ children, ...props }) {
@@ -68,9 +69,9 @@ export default function Model(props) {
       <ambientLight intensity={Math.PI / 2} />
       <Physics timeStep="vary">
         <KeyboardControls map={keyboardMap}>
-          <Controller maxVelLimit={5}>
+          <Ecctrl maxVelLimit={5} jumpVel={4}>
             <Gltf ref={characterRef} castShadow receiveShadow scale={5} position={[0, 5, 0]} src="/glb/shiba.glb" />
-          </Controller>
+          </Ecctrl>
         </KeyboardControls>
         <RigidBody type="fixed" colliders="trimesh">
           <Gltf castShadow receiveShadow position={[0, 0, 0]} rotation={[0, 0, 0]} scale={4} src="/glb/land.glb" />

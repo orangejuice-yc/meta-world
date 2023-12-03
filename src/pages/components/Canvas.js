@@ -7,7 +7,7 @@ import Env from './Env'
 
 export default function CanvasMap({isAutoRotate,cameraPosition}) {
   return (
-      <Canvas style={{ width: '100vw', height: '100vh' }} camera={{ position: [500, 500, 500], fov: 55, near: 0.1 }}>
+      <Canvas style={{ width: '100vw', height: '100vh' }}>
         <color attach="background" args={['skyblue']} />
         <Model />
         <Env />
