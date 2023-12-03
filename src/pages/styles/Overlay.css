@@ -1,0 +1,14 @@
+.overlay-container{
+    .overlay-logo{
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        font-size: 38px;
+        /* background: linear-gradient(30deg, #c850c0, #ffcc70); */
+        background: linear-gradient(30deg, #ffed7f, #ffffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 900;
+        text-shadow: 0 2px 5px rgba(0,0,0,.1);
+    }
+}
