@@ -50,18 +50,12 @@ export default function Model(props) {
         setPreviousPosition({ x, y, z });
       }
     }
-    // if (meshRef.current) {
-    //   // 获取摄像头位置
-    //   const cameraPosition = camera.position;
-    //   // 计算元素朝向摄像头的方向向量
-    //   const lookAtVector = new THREE.Vector3();
-    //   // console.log(lookAtVector)
-    //   meshRef.current.getWorldPosition(lookAtVector);
-    //   lookAtVector.sub(cameraPosition).normalize();
-
-    //   // 将元素朝向摄像头
-    //   meshRef.current.lookAt(lookAtVector);
-    // }
+    if (meshRef.current) {
+      // 获取摄像头位置
+      const cameraPosition = camera.position;
+      // 将元素朝向摄像头
+      meshRef.current.lookAt(cameraPosition);
+    }
   });
   return (
     <>
@@ -70,7 +64,7 @@ export default function Model(props) {
       <Physics timeStep="vary">
         <KeyboardControls map={keyboardMap}>
           <Ecctrl maxVelLimit={5} jumpVel={4}>
-            <Gltf ref={characterRef} castShadow receiveShadow scale={5} position={[0, 5, 0]} src="/glb/shiba.glb" />
+            <Gltf ref={characterRef} castShadow receiveShadow scale={2} position={[0, 15.5, 0]} src="/glb/shiba.glb" />
           </Ecctrl>
         </KeyboardControls>
         <RigidBody type="fixed" colliders="trimesh">
@@ -78,8 +72,8 @@ export default function Model(props) {
         </RigidBody>
       </Physics>
       <mesh ref={meshRef}>
-        <Gltf  onPointerOver={(event) => { console.log(111111); setHover(true) }}
-          onPointerOut={(event) => setHover(false)} position={[10, 10, 10]} rotation={[0, 0, 0]} scale={10} src={hovered ? "/glb/bubble_hover.glb" : "/glb/bubble_normal.glb"} />
+        <Gltf  onPointerOver={(event) => { setHover(true) }}
+          onPointerOut={(event) => setHover(false)} position={[10, 10, 10]} rotation={[0, Math.PI / 2, 0]} scale={5} src={hovered ? "/glb/bubble_hover.glb" : "/glb/bubble_normal.glb"} />
       </mesh>
       {/* <Annotation position={[20, 20, 20]}>
         <span style={{ fontSize: '1.5em' }}>🌕</span> Aglaia
