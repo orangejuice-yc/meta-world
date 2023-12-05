@@ -64,11 +64,11 @@ export default function Model(props) {
       <Physics timeStep="vary">
         <KeyboardControls map={keyboardMap}>
           <Ecctrl maxVelLimit={5} jumpVel={4}>
-            <Gltf ref={characterRef} castShadow receiveShadow scale={2} position={[0, 15.5, 0]} src="/glb/shiba.glb" />
+            <Gltf ref={characterRef} castShadow receiveShadow scale={1} position={[0, 0, 0]} src="/glb/shiba.glb" />
           </Ecctrl>
         </KeyboardControls>
         <RigidBody type="fixed" colliders="trimesh">
-          <Gltf castShadow receiveShadow position={[0, 0, 0]} rotation={[0, 0, 0]} scale={4} src="/glb/land.glb" />
+          <Gltf castShadow receiveShadow position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1} src="/glb/land.glb" />
         </RigidBody>
       </Physics>
       <mesh ref={meshRef}>

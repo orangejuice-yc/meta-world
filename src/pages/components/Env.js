@@ -9,8 +9,8 @@ export default function Env({ direction = [5, 5, 5] }) {
   return (
     <>
       <Clouds material={THREE.MeshBasicMaterial}>
-        <Cloud seed={10} bounds={30} volume={80} position={[60, 100, -130]} />
-        <Cloud seed={10} bounds={30} volume={80} position={[-60, 100, 130]} />
+        <Cloud seed={10} bounds={30} volume={60} position={[30, 30, -60]} />
+        <Cloud seed={10} bounds={30} volume={60} position={[-30, 30, 60]} />
       </Clouds>
       <Environment preset="city" />
       {/* <Sky /> */}

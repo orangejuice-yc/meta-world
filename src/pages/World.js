@@ -5,7 +5,7 @@ import Overlay from './components/Overlay'
 
 export default function World() {
   const [isAutoRotate, setAutoRotate] = useState(true)
-  const [cameraPosition, setCameraPosition] = useState([100, 100, 100]);
+  const [cameraPosition, setCameraPosition] = useState([45, 45, 45]);
   const TogoCameraView = () => {
     setCameraPosition([0, 5, -10])
     setAutoRotate(false)
