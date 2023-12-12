@@ -4,8 +4,9 @@
         top: 40px;
         left: 40px;
         font-size: 38px;
-        /* background: linear-gradient(30deg, #c850c0, #ffcc70); */
-        background: linear-gradient(30deg, #ffed7f, #ffffff);
+        /* background: linear-gradient(30deg,  #c850c0, #ffcc70, #ffed7f); */
+        /* background: linear-gradient(30deg, #ffed7f, #ffffff); */
+        background: linear-gradient(30deg, #ffffff,#fff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: 900;
