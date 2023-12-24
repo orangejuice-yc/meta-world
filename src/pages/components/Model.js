@@ -90,6 +90,11 @@ export default function Model(props) {
       meshRef1.current.rotateX(0)
     
   });
+
+  const clickMeshRef1 = () => {
+    console.log(meshRef1.current.position)
+    props.TogoCameraView([meshRef1.current.position.x,2,meshRef1.current.position.z-10])
+  }
   // const Annotation = ({ children, ...props }) => {
   //   return (
   //     <Html
@@ -153,7 +158,9 @@ export default function Model(props) {
       <mesh>
          {/* 企业文化展示 */}
          <Gltf ref={meshRef1} onPointerOver={(event) => { setHover7(true) }}
-          onPointerOut={(event) => setHover7(false)} position={[-1, 5, 3.8]} scale={hovered7 ? 2 : 1.5}  src={hovered7 ? "/glb/title/culturegrey.glb" : "/glb/title/culture.glb"} />
+          onPointerOut={(event) => setHover7(false)} 
+          onClick={clickMeshRef1}
+          position={[-1, 5, 3.8]} scale={hovered7 ? 2 : 1.5}  src={hovered7 ? "/glb/title/culturegrey.glb" : "/glb/title/culture.glb"} />
          {/* 企业文化展示 */}
          <Gltf ref={meshRef2} onPointerOver={(event) => { setHover8(true) }}
           onPointerOut={(event) => setHover8(false)} position={[-8.8, 5, -15]} scale={hovered8 ? 2 : 1.5}  src={hovered8 ? "/glb/title/culturegrey.glb" : "/glb/title/culture.glb"} />

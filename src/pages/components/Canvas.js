@@ -5,12 +5,12 @@ import Model from './Model'
 import Env from './Env'
 
 
-export default function CanvasMap({isAutoRotate,cameraPosition}) {
+export default function CanvasMap({isAutoRotate,cameraPosition,TogoCameraView}) {
   return (
       <Canvas style={{ width: '100vw', height: '100vh' }}>
         {/* some blue : #6da2dd,#65c2ef #78cef9 */}
         <color attach="background" args={['#64a1dd']} /> 
-        <Model />
+        <Model TogoCameraView={TogoCameraView}/>
         <Env />
         
         <OrbitControls
