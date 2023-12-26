@@ -6,14 +6,16 @@ import Overlay from './components/Overlay'
 export default function World() {
   const [isAutoRotate, setAutoRotate] = useState(true)
   const [cameraPosition, setCameraPosition] = useState([35, 25, 35]);
+  const [isZoomIn,setZoomIn] = useState(false)
+
   const TogoCameraView = (position) => {
     setCameraPosition(position)
     setAutoRotate(false)
   }
   return (
     <div className='world-container'>
-      <Canvas isAutoRotate={isAutoRotate} cameraPosition={cameraPosition} TogoCameraView={TogoCameraView}/>
-      <Overlay />
+      <Canvas isAutoRotate={isAutoRotate} cameraPosition={cameraPosition} TogoCameraView={TogoCameraView} isZoomIn={isZoomIn} SetZoomIn={setZoomIn}/>
+      <Overlay isZoomIn={isZoomIn} />
     </div>
   )
 }
