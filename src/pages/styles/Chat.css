@@ -7,6 +7,7 @@
   margin:0 auto;
   min-width:930px;
   max-width:1023px;
+
   .chat-text{
     max-width: 850px;
     width:100%;
@@ -15,11 +16,34 @@
     color:#1c228c;
     border-radius: 15px;
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: bold;
     line-height: 1.5em;
     transition: transform .75s cubic-bezier(.55, 0, .1, 1);
     margin-bottom: 10px;
+  }
+
+  .search-container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top:10px
+  }
+
+  .search-textarea{
+    width:100%;
+    resize:none;
+    font-size: 1.2rem;
+    height:1.2rem;
+    line-height: 1.2rem;
+    border-radius:15px;
+    border:2px solid #ccc;
+    padding: 10px 15px;
+    max-height: 6rem;
+    color:#666
+  }
+  textarea:focus-visible{
+    outline: none;
   }
   .chat-button{
     display: flex;

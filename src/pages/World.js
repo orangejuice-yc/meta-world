@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
-import Canvas from './components/Canvas'
-import Overlay from './components/Overlay'
+import Canvas from './components/Canvas';
+import Overlay from './components/Overlay';
 
+const wholeCameraPosition = [35, 25, 35]
 export default function World() {
   const [isAutoRotate, setAutoRotate] = useState(true)
-  const [cameraPosition, setCameraPosition] = useState([35, 25, 35]);
+  const [cameraPosition, setCameraPosition] = useState(wholeCameraPosition);
   const [isZoomIn,setZoomIn] = useState(false)
 
   const TogoCameraView = (position) => {
@@ -15,7 +16,7 @@ export default function World() {
   return (
     <div className='world-container'>
       <Canvas isAutoRotate={isAutoRotate} cameraPosition={cameraPosition} TogoCameraView={TogoCameraView} isZoomIn={isZoomIn} SetZoomIn={setZoomIn}/>
-      <Overlay isZoomIn={isZoomIn} />
+      <Overlay setAutoRotate={setAutoRotate} isZoomIn={isZoomIn} TogoCameraView={TogoCameraView} />
     </div>
   )
 }

@@ -69,7 +69,7 @@ export default function Model(props) {
       hoverdGlb: '/glb/bubble_hover.glb',
       hoverd: bubbleHovered1,
       setHover: setBubbleHover1,
-      robotGlb:'/glb/Alronald-red.glb'
+      robotGlb:'/glb/robot/Alronald-purple.glb'
     },
     {
       title: '白色机器人',
@@ -83,7 +83,7 @@ export default function Model(props) {
       hoverdGlb: '/glb/bubble_hover.glb',
       hoverd: bubbleHovered2,
       setHover: setBubbleHover2,
-      robotGlb:'/glb/Alronald-red.glb'
+      robotGlb:'/glb/robot/Alronald-purple.glb'
     },
     {
       title: '粉色机器人',
@@ -97,7 +97,7 @@ export default function Model(props) {
       hoverdGlb: '/glb/bubble_hover.glb',
       hoverd: bubbleHovered3,
       setHover: setBubbleHover3,
-      robotGlb:'/glb/Alronald-red.glb'
+      robotGlb:'/glb/robot/Alronald-pink.glb'
     },
     {
       title: '蓝色机器人',
@@ -111,7 +111,7 @@ export default function Model(props) {
       hoverdGlb: '/glb/bubble_hover.glb',
       hoverd: bubbleHovered4,
       setHover: setBubbleHover4,
-      robotGlb:'/glb/Alronald-red.glb'
+      robotGlb:'/glb/robot/Alronald-blue.glb'
     },
     {
       title: '红色机器人',
@@ -125,7 +125,7 @@ export default function Model(props) {
       hoverdGlb: '/glb/bubble_hover.glb',
       hoverd: bubbleHovered5,
       setHover: setBubbleHover5,
-      robotGlb:'/glb/Alronald-red.glb'
+      robotGlb:'/glb/robot/Alronald-red.glb'
     },
     {
       title: '橙色机器人',
@@ -139,16 +139,16 @@ export default function Model(props) {
       hoverdGlb: '/glb/bubble_hover.glb',
       hoverd: bubbleHovered6,
       setHover: setBubbleHover6,
-      robotGlb:'/glb/Alronald-red.glb'
+      robotGlb:'/glb/robot/Alronald-orange.glb'
     },
   ];
 
   const TextPlaqueList = [
     {
-      title: '企业文化',
+      title: 'coffee',
       engTitle: 'Culture',
       ref: titleRef1,
-      position: [-1, 9, 3.8],
+      position: [-10, 9, 5.8],
       defaultGlb: '/glb/title/informationReleaseDefault.glb',
       hoverdGlb: '/glb/title/informationReleaseHoverd.glb',
       hoverd: titleHovered1,
@@ -158,34 +158,34 @@ export default function Model(props) {
       title: '企业文化',
       engTitle: 'Culture',
       ref: titleRef2,
-      position: [-8.8, 9, -15],
+      position: [-17.8, 9, -15],
       defaultGlb: '/glb/title/informationReleaseDefault.glb',
       hoverdGlb: '/glb/title/informationReleaseHoverd.glb',
       hoverd: titleHovered2,
       setHover: setTitleHover2
     },
     {
-      title: '企业文化',
-      engTitle: 'Culture',
+      title: '图书馆',
+      engTitle: 'Library',
       ref: titleRef3,
-      position: [-34, 9, 4.8],
+      position: [-42, 9, -2],
       defaultGlb: '/glb/title/informationReleaseDefault.glb',
       hoverdGlb: '/glb/title/informationReleaseHoverd.glb',
       hoverd: titleHovered3,
       setHover: setTitleHover3
     },
     {
-      title: '企业文化',
-      engTitle: 'Culture',
+      title: '信息发布',
+      engTitle: 'message house',
       ref: titleRef4,
-      position: [18.5, 9, 7],
+      position: [26.5, 9, 11],
       defaultGlb: '/glb/title/informationReleaseDefault.glb',
       hoverdGlb: '/glb/title/informationReleaseHoverd.glb',
       hoverd: titleHovered4,
       setHover: setTitleHover4
     },
     {
-      title: '企业文化',
+      title: '圣诞树',
       engTitle: 'Culture',
       ref: titleRef5,
       position: [16.5, 9, -15],
@@ -195,10 +195,10 @@ export default function Model(props) {
       setHover: setTitleHover5
     },
     {
-      title: '企业文化',
-      engTitle: 'Culture',
+      title: '健康管理',
+      engTitle: 'health',
       ref: titleRef6,
-      position: [47.5, 9, -6.8],
+      position: [60.5, 9, -5.8],
       defaultGlb: '/glb/title/informationReleaseDefault.glb',
       hoverdGlb: '/glb/title/informationReleaseHoverd.glb',
       hoverd: titleHovered6,
@@ -315,7 +315,7 @@ export default function Model(props) {
           }
         </mesh>}
 
-      <ChatHtml chatShow={chatShow} />
+      {props.isZoomIn && <ChatHtml chatShow={chatShow} />}
 
       {/* 文字牌 */}
       {!props.isZoomIn && <mesh>
