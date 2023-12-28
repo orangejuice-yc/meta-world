@@ -72,7 +72,7 @@ export default function Model(props) {
       robotGlb:'/glb/robot/Alronald-purple.glb'
     },
     {
-      title: '白色机器人',
+      title: '黄色机器人',
       bubbleRef: bubbleRef2,
       robotRef: robotRef2,
       bubblePosition: [-8.8, 3, -15],
@@ -83,7 +83,7 @@ export default function Model(props) {
       hoverdGlb: '/glb/bubble_hover.glb',
       hoverd: bubbleHovered2,
       setHover: setBubbleHover2,
-      robotGlb:'/glb/robot/Alronald-purple.glb'
+      robotGlb:'/glb/robot/Alronald-yellow.glb'
     },
     {
       title: '粉色机器人',
@@ -114,7 +114,7 @@ export default function Model(props) {
       robotGlb:'/glb/robot/Alronald-blue.glb'
     },
     {
-      title: '红色机器人',
+      title: '灰色机器人',
       bubbleRef: bubbleRef5,
       robotRef: robotRef5,
       bubblePosition: [16.5, 3, -15],
@@ -125,7 +125,7 @@ export default function Model(props) {
       hoverdGlb: '/glb/bubble_hover.glb',
       hoverd: bubbleHovered5,
       setHover: setBubbleHover5,
-      robotGlb:'/glb/robot/Alronald-red.glb'
+      robotGlb:'/glb/robot/Alronald-grey.glb'
     },
     {
       title: '橙色机器人',
@@ -145,62 +145,64 @@ export default function Model(props) {
 
   const TextPlaqueList = [
     {
-      title: 'coffee',
-      engTitle: 'Culture',
+      title: '论坛与社团',
+      engTitle: 'DISCUSSION BOARD & CLUB',
       ref: titleRef1,
       position: [-10, 9, 5.8],
-      defaultGlb: '/glb/title/informationReleaseDefault.glb',
-      hoverdGlb: '/glb/title/informationReleaseHoverd.glb',
+      cameraPosition:[-1,3.5,0],
+      tomatoPosition:[-1,0,-1],
+      defaultGlb: '/glb/title/DiscussionBoard&ClubDefault.glb',
+      hoverdGlb: '/glb/title/DiscussionBoard&ClubHoverd.glb',
       hoverd: titleHovered1,
       setHover: setTitleHover1
     },
     {
-      title: '企业文化',
-      engTitle: 'Culture',
+      title: '企业文化展示',
+      engTitle: 'CULTURE SHOWCASE',
       ref: titleRef2,
       position: [-17.8, 9, -15],
-      defaultGlb: '/glb/title/informationReleaseDefault.glb',
-      hoverdGlb: '/glb/title/informationReleaseHoverd.glb',
+      defaultGlb: '/glb/title/CultureShowcaseDefault.glb',
+      hoverdGlb: '/glb/title/CultureShowcaseHoverd.glb',
       hoverd: titleHovered2,
       setHover: setTitleHover2
     },
     {
-      title: '图书馆',
-      engTitle: 'Library',
+      title: '企业图书馆',
+      engTitle: 'CORPORATE LIBRARY',
       ref: titleRef3,
       position: [-42, 9, -2],
-      defaultGlb: '/glb/title/informationReleaseDefault.glb',
-      hoverdGlb: '/glb/title/informationReleaseHoverd.glb',
+      defaultGlb: '/glb/title/CorporateLibraryDefault.glb',
+      hoverdGlb: '/glb/title/CorporateLibraryHoverd.glb',
       hoverd: titleHovered3,
       setHover: setTitleHover3
     },
     {
       title: '信息发布',
-      engTitle: 'message house',
+      engTitle: 'INFORMATION RELEASE',
       ref: titleRef4,
       position: [26.5, 9, 11],
-      defaultGlb: '/glb/title/informationReleaseDefault.glb',
-      hoverdGlb: '/glb/title/informationReleaseHoverd.glb',
+      defaultGlb: '/glb/title/InformationReleaseDefault.glb',
+      hoverdGlb: '/glb/title/InformationReleaseHoverd.glb',
       hoverd: titleHovered4,
       setHover: setTitleHover4
     },
     {
-      title: '圣诞树',
-      engTitle: 'Culture',
+      title: '职业管理与提升',
+      engTitle: 'CAREER ADVANCEMENT',
       ref: titleRef5,
       position: [16.5, 9, -15],
-      defaultGlb: '/glb/title/informationReleaseDefault.glb',
-      hoverdGlb: '/glb/title/informationReleaseHoverd.glb',
+      defaultGlb: '/glb/title/CareerAdvancedDefault.glb',
+      hoverdGlb: '/glb/title/CareerAdvancedHoverd.glb',
       hoverd: titleHovered5,
       setHover: setTitleHover5
     },
     {
       title: '健康管理',
-      engTitle: 'health',
+      engTitle: 'HEALTH CARE',
       ref: titleRef6,
       position: [60.5, 9, -5.8],
-      defaultGlb: '/glb/title/informationReleaseDefault.glb',
-      hoverdGlb: '/glb/title/informationReleaseHoverd.glb',
+      defaultGlb: '/glb/title/HealthCareDefault.glb',
+      hoverdGlb: '/glb/title/HealthCareHoverd.glb',
       hoverd: titleHovered6,
       setHover: setTitleHover6
     }
@@ -211,7 +213,7 @@ export default function Model(props) {
   const [previousPosition, setPreviousPosition] = useState({ x: 0, y: 0, z: 0 });
   const [chatShow, setChatShow] = useState(false)
   const [textPlaqueList, setTextPlaqueList] = useState(TextPlaqueList);
-
+  const [tomatoPosition,setTomatoPosition] = useState([0,0,0])
 
   useFrame(({ camera }) => {
     if (characterRef.current) {
@@ -229,32 +231,26 @@ export default function Model(props) {
       const cameraPosition = camera.position;
       // 将元素朝向摄像头
       titleRef6?.current?.lookAt(cameraPosition);
-      titleRef6?.current?.rotateY(- Math.PI / 2)
       titleRef6?.current?.rotateZ(0)
       titleRef6?.current?.rotateX(0)
 
       titleRef5?.current?.lookAt(cameraPosition);
-      titleRef5?.current?.rotateY(- Math.PI / 2)
       titleRef5?.current?.rotateZ(0)
       titleRef5?.current?.rotateX(0)
 
       titleRef4?.current?.lookAt(cameraPosition);
-      titleRef4?.current?.rotateY(- Math.PI / 2)
       titleRef4?.current?.rotateZ(0)
       titleRef4?.current?.rotateX(0)
 
       titleRef3?.current?.lookAt(cameraPosition);
-      titleRef3?.current?.rotateY(- Math.PI / 2)
       titleRef3?.current?.rotateZ(0)
       titleRef3?.current?.rotateX(0)
 
       titleRef2?.current?.lookAt(cameraPosition);
-      titleRef2?.current?.rotateY(- Math.PI / 2)
       titleRef2?.current?.rotateZ(0)
       titleRef2?.current?.rotateX(0)
 
       titleRef1?.current?.lookAt(cameraPosition);
-      titleRef1?.current?.rotateY(- Math.PI / 2)
       titleRef1?.current?.rotateZ(0)
       titleRef1?.current?.rotateX(0)
     }
@@ -262,12 +258,10 @@ export default function Model(props) {
 
   });
 
-  const clickTitleRef = (position) => {
-    console.log(position);
-    const currentTitlePosition = position
+  const clickTitleRef = (item) => {
     props.SetZoomIn(true)
-    props.TogoCameraView([currentTitlePosition[0] + 2, 2, currentTitlePosition[2] - 10])
-    robotRef1?.current?.lookAt([currentTitlePosition[0] + 2, 2, currentTitlePosition[2] - 10]);
+    props.TogoCameraView(item.cameraPosition)
+    setTomatoPosition(item.tomatoPosition)
     // robotRef1?.current?.rotateY(- Math.PI / 2)
     // robotRef1?.current?.rotateZ(0)
     // robotRef1?.current?.rotateX(0)
@@ -284,14 +278,14 @@ export default function Model(props) {
       {/* <CameraControls minPolarAngle={1} maxPolarAngle={Math.PI / 1.6} /> */}
       <ambientLight intensity={Math.PI / 2} />
       <Physics timeStep="vary">
-        {/* <KeyboardControls map={keyboardMap}>
+        {props?.isZoomIn && <KeyboardControls map={keyboardMap}>
           <Ecctrl maxVelLimit={5} jumpVel={4}>
-            <Gltf ref={characterRef} castShadow receiveShadow scale={1} position={[0, 0.5, 0]} src="/glb/shiba.glb" />
+            <Gltf ref={characterRef} castShadow receiveShadow scale={0.2} rotation={[0, -Math.PI / 2, 0]} position={tomatoPosition} src="/glb/tomato.glb" />
           </Ecctrl>
-        </KeyboardControls> */}
+        </KeyboardControls>}
         <RigidBody type="fixed" colliders="trimesh">
           {/* <Gltf castShadow receiveShadow position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1} src={props.isZoomIn ? "/glb/land.glb" : "/glb/landInit.glb"} /> */}
-          <Gltf castShadow receiveShadow position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1} src={"/glb/landInit.glb"} />
+          <Gltf castShadow receiveShadow position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1} src={"/glb/land.glb"} />
         </RigidBody>
       </Physics>
 
@@ -325,7 +319,7 @@ export default function Model(props) {
             ref={item.ref}
             onPointerOver={(event) => item.setHover(true)}
             onPointerOut={(event) => item.setHover(false)}
-            onClick={() => clickTitleRef(item.position)}
+            onClick={() => clickTitleRef(item)}
             position={item.position}
             scale={item?.hoverd ? 2.5 : 2}
             src={item?.hoverd ? item?.hoverdGlb : item?.defaultGlb}

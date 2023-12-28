@@ -25,9 +25,10 @@ export default function CanvasMap({isAutoRotate,cameraPosition,TogoCameraView,is
         <PerspectiveCamera
           makeDefault  // 使摄像头成为默认相机
           position={cameraPosition}  // 设置摄像头位置
-          fov={65}  // 设置视野范围
+          rotation={[0,0,0]}
+          fov={55}  // 设置视野范围
           near={0.1}  // 设置近裁剪面
-          far={1000}  // 设置远裁剪面
+          far={100}  // 设置远裁剪面
         />
         <axesHelper args={[500]} />
       </Canvas>
