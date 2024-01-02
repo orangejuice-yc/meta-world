@@ -2,8 +2,7 @@ import React, { useRef, useState } from "react";
 import { useFrame } from '@react-three/fiber'
 import { Gltf, Environment, Fisheye, PerspectiveCamera, KeyboardControls, CameraControls, OrbitControls, Html } from '@react-three/drei'
 import { Physics, RigidBody } from '@react-three/rapier'
-// import Controller from 'ecctrl'
-import Ecctrl, { EcctrlAnimation } from "ecctrl";
+import Controller from 'ecctrl'
 import { directive } from "@babel/types";
 import * as THREE from 'three';
 import ChatHtml from './Chat'
@@ -260,6 +259,7 @@ export default function Model(props) {
 
   const clickTitleRef = (item) => {
     props.SetZoomIn(true)
+    props.setAutoRotate(false)
     props.TogoCameraView(item.cameraPosition)
     setTomatoPosition(item.tomatoPosition)
     // robotRef1?.current?.rotateY(- Math.PI / 2)
@@ -277,14 +277,13 @@ export default function Model(props) {
     <>
       {/* <CameraControls minPolarAngle={1} maxPolarAngle={Math.PI / 1.6} /> */}
       <ambientLight intensity={Math.PI / 2} />
-      <Physics timeStep="vary">
+      <Physics  timeStep="vary">
         {props?.isZoomIn && <KeyboardControls map={keyboardMap}>
-          <Ecctrl maxVelLimit={5} jumpVel={4}>
-            <Gltf ref={characterRef} castShadow receiveShadow scale={0.2} rotation={[0, -Math.PI / 2, 0]} position={tomatoPosition} src="/glb/tomato.glb" />
-          </Ecctrl>
+          <Controller  maxVelLimit={5}>
+            <Gltf ref={characterRef} castShadow receiveShadow scale={0.2} rotation={[0, 0, 0]} position={tomatoPosition} src="/glb/tomato.glb" />
+          </Controller>
         </KeyboardControls>}
         <RigidBody type="fixed" colliders="trimesh">
-          {/* <Gltf castShadow receiveShadow position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1} src={props.isZoomIn ? "/glb/land.glb" : "/glb/landInit.glb"} /> */}
           <Gltf castShadow receiveShadow position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1} src={"/glb/land.glb"} />
         </RigidBody>
       </Physics>

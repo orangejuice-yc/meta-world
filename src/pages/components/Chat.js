@@ -12,6 +12,7 @@ export default function ChatHtml(props) {
     );
 
     const handleInputChange = (e) => {
+        e.stopPropagation()
         console.log(e.target.value)
         const value = e?.target?.value || '';
         if (value.includes('\n')) {

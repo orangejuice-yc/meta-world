@@ -15,7 +15,7 @@ export default function World() {
   }
   return (
     <div className='world-container'>
-      <Canvas isAutoRotate={isAutoRotate} cameraPosition={cameraPosition} TogoCameraView={TogoCameraView} isZoomIn={isZoomIn} SetZoomIn={setZoomIn}/>
+      <Canvas isAutoRotate={isAutoRotate} cameraPosition={cameraPosition} setAutoRotate={setAutoRotate} TogoCameraView={TogoCameraView} isZoomIn={isZoomIn} SetZoomIn={setZoomIn}/>
       <Overlay setAutoRotate={setAutoRotate} isZoomIn={isZoomIn} SetZoomIn={setZoomIn} TogoCameraView={TogoCameraView} />
     </div>
   )
