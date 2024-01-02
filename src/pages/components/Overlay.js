@@ -12,7 +12,8 @@ export default function Overlay(props) {
       <div className="overlay-logo">META WORLD</div>
       {/* <div className="" style={{ position: 'absolute', bottom: 40, right: 40, fontSize: '13px' }}>ZIMA BLUE TEAM</div> */}
       {props?.isZoomIn && <button className="overlay-navigate" onClick={back2Map}>
-        NAVIGATE
+        <img src={"/navigator.png"}/>
+        <p>NAVIGATE</p>
       </button>}
     </div>
   )

@@ -12,12 +12,43 @@
         font-weight: 900;
         text-shadow: 0 2px 5px rgba(0,0,0,.1);
     }
+
     .overlay-navigate{
         position: absolute;
-        bottom: 40px;
-        left: 40px;
+        bottom: 20px;
+        left: 0px;
+        right: 0;
         font-size: 13px;
-        z-index: 999;
-        background-color: yellow
+        z-index: 9;
+        background-color: transparent;
+        border:none;
+        pointer-events: all;
+        cursor: pointer;
+        img{
+            width:450px;
+            animation: sway 10s ease-in-out infinite;
+        }
+        p{
+            position: absolute;
+            bottom: 5px;
+            left: 0px;
+            right: 0;
+            z-index: 10;
+            font-size: 24px;
+            font-weight: bold;
+            color:#f50359;
+            font-family: "Arial Black", Arial, sans-serif;
+        }
     }
 }
+@keyframes sway {
+    0% {
+      transform: rotateZ(7deg); /* 初始位置 */
+    }
+    50% {
+      transform: rotateZ(-7deg); /* 左移 */
+    }
+    100% {
+      transform: rotateZ(7deg); /* 右移 */
+    }
+  }
