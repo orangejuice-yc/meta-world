@@ -25,7 +25,7 @@
         pointer-events: all;
         cursor: pointer;
         img{
-            width:450px;
+            width:350px;
             animation: sway 10s ease-in-out infinite;
         }
         p{

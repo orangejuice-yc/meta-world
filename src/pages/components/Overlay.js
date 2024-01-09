@@ -6,6 +6,7 @@ export default function Overlay(props) {
     props.TogoCameraView([35,35,35]);
     props.setAutoRotate(true);
     props.SetZoomIn(false)
+    props.cameraFov.current = 65
   }
   return (
     <div className="overlay-container">

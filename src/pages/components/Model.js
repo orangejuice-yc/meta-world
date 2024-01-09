@@ -11,10 +11,10 @@ import ChatHtml from './Chat'
 export default function Model(props) {
 
   const keyboardMap = [
-    { name: 'forward', keys: ['ArrowUp', 'KeyW'] },
-    { name: 'backward', keys: ['ArrowDown', 'KeyS'] },
-    { name: 'leftward', keys: ['ArrowLeft', 'KeyA'] },
-    { name: 'rightward', keys: ['ArrowRight', 'KeyD'] },
+    { name: 'forward', keys: ['ArrowUp'] },
+    { name: 'backward', keys: ['ArrowDown'] },
+    { name: 'leftward', keys: ['ArrowLeft'] },
+    { name: 'rightward', keys: ['ArrowRight'] },
     { name: 'jump', keys: ['Space'] },
     { name: 'run', keys: ['Shift'] },
   ]
@@ -74,10 +74,10 @@ export default function Model(props) {
       title: '黄色机器人',
       bubbleRef: bubbleRef2,
       robotRef: robotRef2,
-      bubblePosition: [-8.8, 3, -15],
-      bubbleRotation: [0, Math.PI / 2, 0],
-      robotPosition: [-8.8, 2, -15],
-      robotRotation: [0, Math.PI / 2, 0],
+      bubblePosition: [-12.8, 3, -10],
+      bubbleRotation: [0, 0.3, 0],
+      robotPosition: [-12.8, 2, -10],
+      robotRotation: [0, 0.3, 0],
       defaultGlb: '/glb/bubble_normal.glb',
       hoverdGlb: '/glb/bubble_hover.glb',
       hoverd: bubbleHovered2,
@@ -147,9 +147,11 @@ export default function Model(props) {
       title: '论坛与社团',
       engTitle: 'DISCUSSION BOARD & CLUB',
       ref: titleRef1,
+      fov:25,
       position: [-10, 9, 5.8],
-      cameraPosition:[-1,3.5,0],
+      cameraPosition:[15,0,-3],
       tomatoPosition:[-1,0,-1],
+      tomatoRotation:[0,0,0],
       defaultGlb: '/glb/title/DiscussionBoard&ClubDefault.glb',
       hoverdGlb: '/glb/title/DiscussionBoard&ClubHoverd.glb',
       hoverd: titleHovered1,
@@ -159,7 +161,11 @@ export default function Model(props) {
       title: '企业文化展示',
       engTitle: 'CULTURE SHOWCASE',
       ref: titleRef2,
+      fov:25,
       position: [-17.8, 9, -15],
+      cameraPosition:[10.8,0,12],
+      tomatoPosition:[-12.8,0,-6],
+      tomatoRotation:[0,-Math.PI/2,0],
       defaultGlb: '/glb/title/CultureShowcaseDefault.glb',
       hoverdGlb: '/glb/title/CultureShowcaseHoverd.glb',
       hoverd: titleHovered2,
@@ -170,6 +176,9 @@ export default function Model(props) {
       engTitle: 'CORPORATE LIBRARY',
       ref: titleRef3,
       position: [-42, 9, -2],
+      // cameraPosition:[-12.8,2,5],
+      // tomatoPosition:[-12.8,0,-6],
+      // tomatoRotation:[0,-Math.PI/2,0],
       defaultGlb: '/glb/title/CorporateLibraryDefault.glb',
       hoverdGlb: '/glb/title/CorporateLibraryHoverd.glb',
       hoverd: titleHovered3,
@@ -180,6 +189,9 @@ export default function Model(props) {
       engTitle: 'INFORMATION RELEASE',
       ref: titleRef4,
       position: [26.5, 9, 11],
+      // cameraPosition:[-12.8,2,5],
+      // tomatoPosition:[-12.8,0,-6],
+      // tomatoRotation:[0,-Math.PI/2,0],
       defaultGlb: '/glb/title/InformationReleaseDefault.glb',
       hoverdGlb: '/glb/title/InformationReleaseHoverd.glb',
       hoverd: titleHovered4,
@@ -190,6 +202,9 @@ export default function Model(props) {
       engTitle: 'CAREER ADVANCEMENT',
       ref: titleRef5,
       position: [16.5, 9, -15],
+      // cameraPosition:[-12.8,2,5],
+      // tomatoPosition:[-12.8,0,-6],
+      // tomatoRotation:[0,-Math.PI/2,0],
       defaultGlb: '/glb/title/CareerAdvancedDefault.glb',
       hoverdGlb: '/glb/title/CareerAdvancedHoverd.glb',
       hoverd: titleHovered5,
@@ -200,6 +215,9 @@ export default function Model(props) {
       engTitle: 'HEALTH CARE',
       ref: titleRef6,
       position: [60.5, 9, -5.8],
+      // cameraPosition:[-12.8,2,5],
+      // tomatoPosition:[-12.8,0,-6],
+      // tomatoRotation:[0,-Math.PI/2,0],
       defaultGlb: '/glb/title/HealthCareDefault.glb',
       hoverdGlb: '/glb/title/HealthCareHoverd.glb',
       hoverd: titleHovered6,
@@ -212,22 +230,23 @@ export default function Model(props) {
   const [previousPosition, setPreviousPosition] = useState({ x: 0, y: 0, z: 0 });
   const [chatShow, setChatShow] = useState(false)
   const [textPlaqueList, setTextPlaqueList] = useState(TextPlaqueList);
-  const [tomatoPosition,setTomatoPosition] = useState([0,0,0])
-
+  const [tomatoPosition,setTomatoPosition] = useState(null)
+  const [tomatoRotation,setTomatoRotation] = useState(null)
   useFrame(({ camera }) => {
-    if (characterRef.current) {
-      const { x, y, z } = characterRef.current.position;
-      // 检查当前位置和之前的位置是否相同
-      if (x !== previousPosition.x || y !== previousPosition.y || z !== previousPosition.z) {
-        // 位置已更新，执行操作并更新前一帧位置
-        console.log('对象的位置信息:', { x, y, z });
-        setPreviousPosition({ x, y, z });
-      }
-    }
-
+    // if (characterRef.current) {
+    //   const { x, y, z } = characterRef.current.position;
+    //   // 检查当前位置和之前的位置是否相同
+    //   if (x !== previousPosition.x || y !== previousPosition.y || z !== previousPosition.z) {
+    //     // 位置已更新，执行操作并更新前一帧位置
+    //     console.log('对象的位置信息:', { x, y, z });
+    //     setPreviousPosition({ x, y, z });
+    //   }
+    // }
+    // 获取摄像头位置
+    const cameraPosition = camera.position;
     if (!props.isZoomIn) {
-      // 获取摄像头位置
-      const cameraPosition = camera.position;
+      
+      
       // 将元素朝向摄像头
       titleRef6?.current?.lookAt(cameraPosition);
       titleRef6?.current?.rotateZ(0)
@@ -252,42 +271,60 @@ export default function Model(props) {
       titleRef1?.current?.lookAt(cameraPosition);
       titleRef1?.current?.rotateZ(0)
       titleRef1?.current?.rotateX(0)
+    }else{
+      bubbleRef1?.current?.lookAt(cameraPosition);
+      bubbleRef2?.current?.lookAt(cameraPosition);
+      bubbleRef3?.current?.lookAt(cameraPosition);
+      bubbleRef4?.current?.lookAt(cameraPosition);
+      bubbleRef5?.current?.lookAt(cameraPosition);
+      bubbleRef6?.current?.lookAt(cameraPosition);
     }
-
-
   });
 
-  const clickTitleRef = (item) => {
+  const clickTitleRef = (event,item) => {
+    event.stopPropagation();
+    console.log('item',item)
     props.SetZoomIn(true)
     props.setAutoRotate(false)
-    props.TogoCameraView(item.cameraPosition)
     setTomatoPosition(item.tomatoPosition)
-    // robotRef1?.current?.rotateY(- Math.PI / 2)
-    // robotRef1?.current?.rotateZ(0)
-    // robotRef1?.current?.rotateX(0)
+    setTomatoRotation(item.tomatoRotation)
+    // props.TogoCameraView(item.cameraPosition)
+    
+
+    // 让相机看向指定的点
+    props.cameraRef.current.position.set(item.cameraPosition[0],item.cameraPosition[1],item.cameraPosition[2]);
+    props.cameraFov.current = item.fov;
+    // const position = new THREE.Vector3(item.tomatoPosition[0],item.tomatoPosition[1],item.tomatoPosition[2]);
+
+    // props.cameraRef.current.lookAt(position)
+
+    console.log('cameraControll.current',props.cameraControll.current);
+    console.log('cameraRef.current',props.cameraRef.current);
   }
 
   const startChat = () => {
     console.log('startchat', bubbleRef1)
-    props.TogoCameraView([5.5, 2.5, -1])
+    // props.TogoCameraView([5.5, 2.5, -1])
     setChatShow(true)
   }
 
   return (
     <>
       {/* <CameraControls minPolarAngle={1} maxPolarAngle={Math.PI / 1.6} /> */}
-      <ambientLight intensity={Math.PI / 2} />
+      {/* <directionalLight intensity={0.7} castShadow shadow-bias={-0.0004} position={[-12.8, 3.5, -4]}>
+          <orthographicCamera attach="shadow-camera" args={[-12.8, 3.5, -4, -20, 0.1, 100]} />
+      </directionalLight> */}
+      {/* <ambientLight intensity={Math.PI / 2} /> */}
       <Physics  timeStep="vary">
         {props?.isZoomIn && <KeyboardControls map={keyboardMap}>
           <Controller  maxVelLimit={5}>
-            <Gltf ref={characterRef} castShadow receiveShadow scale={0.2} rotation={[0, 0, 0]} position={tomatoPosition} src="/glb/tomato.glb" />
+            <Gltf ref={characterRef} castShadow receiveShadow scale={0.2} rotation={tomatoRotation} position={tomatoPosition} src="/glb/tomato.glb" />
           </Controller>
         </KeyboardControls>}
         <RigidBody type="fixed" colliders="trimesh">
           <Gltf castShadow receiveShadow position={[0, 0, 0]} rotation={[0, 0, 0]} scale={1} src={"/glb/land.glb"} />
         </RigidBody>
       </Physics>
-
       {/* 小奥及头顶气泡 */}
       {props?.isZoomIn &&
         <mesh>
@@ -308,7 +345,7 @@ export default function Model(props) {
           }
         </mesh>}
 
-      {props.isZoomIn && <ChatHtml chatShow={chatShow} />}
+      {props.isZoomIn && <ChatHtml chatShow={chatShow} setChatShow={setChatShow} />}
 
       {/* 文字牌 */}
       {!props.isZoomIn && <mesh>
@@ -318,7 +355,7 @@ export default function Model(props) {
             ref={item.ref}
             onPointerOver={(event) => item.setHover(true)}
             onPointerOut={(event) => item.setHover(false)}
-            onClick={() => clickTitleRef(item)}
+            onClick={(e) => clickTitleRef(e,item)}
             position={item.position}
             scale={item?.hoverd ? 2.5 : 2}
             src={item?.hoverd ? item?.hoverdGlb : item?.defaultGlb}
