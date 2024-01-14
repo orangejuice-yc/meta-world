@@ -13,7 +13,7 @@ export default function ChatHtml(props) {
     //     { text: 'Hi,My name is Alronard,you can call me Alro,What can I do for you？', sender: 'robot', needInput:false }]
     // );
     const [messages, setMessages] = useState([
-        { text: '你好，我是Alronald，欢迎来到兴趣社团，为您推荐...', sender: 'robot', needInput:true }]
+        { text: '您好，我是Alronald，有什么可以帮助您', sender: 'robot', needInput:true }]
     );
     const [socket, setSocket] = useState(null);
     const currentQuestion = useRef('')
@@ -71,28 +71,6 @@ export default function ChatHtml(props) {
                 <div className="chat-container">
                     <div className="chat-text">
                         <div className="intro-container" style={{textAlign:messages[messages?.length - 1].needInput ? 'left' : 'center'}}>{messages[messages?.length - 1].text}</div>
-                        <div className="goods-list-container">
-                            <div className="goods-recommed">
-                                <img src='/pic/cycling.png' />
-                                <p><span>骑行俱乐部</span></p>
-                            </div>
-                            <div className="goods-recommed">
-                                <img src='/pic/pet.jpg' />
-                                <p><span>萌宠俱乐部</span></p>
-                            </div>
-                            <div className="goods-recommed">
-                                <img src='/pic/reading.png' />
-                                <p><span>阅读俱乐部</span></p>
-                            </div>
-                            <div className="goods-recommed">
-                                <img src='/pic/yoga.png' />
-                                <p><span>瑜伽俱乐部</span></p>
-                            </div>
-                            <div className="goods-recommed">
-                                <img src='/pic/basketball.jpg' />
-                                <p><span>篮球俱乐部</span></p>
-                            </div>
-                        </div>
                         {messages[messages?.length - 1].needInput && 
                         <div className="search-container">
                             <textarea className="search-textarea" onChange={handleInputChange} style={{height:textareaHeight+'rem'}} />
