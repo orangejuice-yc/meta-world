@@ -11,7 +11,7 @@ export default function World() {
   const [isZoomIn,setZoomIn] = useState(false)
   const cameraFov = useRef(65)
 
-  const [chatShow, setChatShow] = useState(true)
+  const [chatShow, setChatShow] = useState(false)
 
   const TogoCameraView = (position) => {
     setCameraPosition(position)

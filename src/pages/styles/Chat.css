@@ -79,6 +79,26 @@
     white-space: pre-wrap;
     margin-bottom: 10px;
   }
+  .goods-list-container{
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    margin-bottom: 20px;
+    .goods-recommed{
+      img{
+        width:150px;
+        height:200px;
+      }
+      p{
+        display: flex;
+        justify-content: space-between;
+        span{
+          font-size: 14px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
   .goods-container{
     display: flex;
     justify-content: space-between;
@@ -96,19 +116,6 @@
     }
     .goods-item:hover{
       background:#eee
-    }
-    .goods-recommed{
-      img{
-        width:150px
-      }
-      p{
-        display: flex;
-        justify-content: space-between;
-        span{
-          font-size: 14px;
-          font-weight: bold;
-        }
-      }
     }
   }
   .forum-container{
