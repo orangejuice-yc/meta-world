@@ -1,25 +1,26 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 // import { Html } from '@react-three/drei'
 // import WebSocket from 'websocket';
 // import WebSocket from 'ws';
 
 import '../styles/Chat.css'
 
-
 export default function ChatHtml(props) {
+    const navigate = useNavigate();
     const ws = new WebSocket('ws://localhost:2333'); // 后端 WebSocket 地址
     const [textareaHeight,setTextareaHeight] = useState(1.2)
     // const [messages, setMessages] = useState([
     //     { text: 'Hi,My name is Alronard,you can call me Alro,What can I do for you？', sender: 'robot', needInput:false }]
     // );
     const [messages, setMessages] = useState([
-        { text: '您好，我是Alronald，有什么可以帮助您', sender: 'robot', needInput:true }]
+        { text: '您好，我是Alronald，这里是企业文化中心，请问有什么可以帮助您', sender: 'robot', needInput:true }]
     );
     const [socket, setSocket] = useState(null);
     const currentQuestion = useRef('')
 
     const nextAnswer = () => {
-        const currentMsg = { text: 'Write down your questions below...', sender: 'robot', needInput: true };
+        const currentMsg = { text: 'Write down your questions below...', sender: 'robot', needInput: false };
         setMessages([...messages,currentMsg])
     }
     useEffect(() => {
@@ -62,20 +63,25 @@ export default function ChatHtml(props) {
           }
     }
     const submitQuestions = () => {
-        console.log(currentQuestion.current)
-        socket.send(currentQuestion.current);
+        // console.log(currentQuestion.current)
+        // socket.send(currentQuestion.current);
+        const currentMsg = { text: '查询到2023年1024程序员节的照片，请点击', sender: 'robot', needInput: false, isView: true };
+        setMessages([...messages,currentMsg])
     }
     return (
         <>
             {props.chatShow && <div className="chat-parent">
                 <div className="chat-container">
                     <div className="chat-text">
-                        <div className="intro-container" style={{textAlign:messages[messages?.length - 1].needInput ? 'left' : 'center'}}>{messages[messages?.length - 1].text}</div>
+                        <div className="intro-container" style={{textAlign:messages[messages?.length - 1].needInput ? 'left' : 'center'}}>
+                            {messages[messages?.length - 1].text}
+                            {messages[messages?.length - 1].isView && <a onClick={() =>  navigate('/culture')} style={{color:'green'}}>查看</a>}
+                        </div>
                         {messages[messages?.length - 1].needInput && 
                         <div className="search-container">
                             <textarea className="search-textarea" onChange={handleInputChange} style={{height:textareaHeight+'rem'}} />
                         </div>}
- 
+                            
                     </div>
                     <div className="chat-button">
                         <div className="button-container button-grey" onClick={() => props.setChatShow(false)}>SEE YOU LATER</div>
