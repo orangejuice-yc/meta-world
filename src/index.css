@@ -8,6 +8,7 @@ body {
   /* cursor:grab; */
   cursor:pointer;
   overflow: hidden;
+  height:100vh
 }
 
 code {

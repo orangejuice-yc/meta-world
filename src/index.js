@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
 import World from './pages/World';
+import Culture from './pages/Culture';
 import reportWebVitals from './reportWebVitals';
 import './index.css'
 
@@ -14,6 +15,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/world" element={<World />} />
+        <Route path="/culture" element={<Culture />} />
       </Routes>
     </Router>
   </React.StrictMode>
