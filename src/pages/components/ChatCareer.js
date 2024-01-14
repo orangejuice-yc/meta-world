@@ -13,7 +13,7 @@ export default function ChatHtml(props) {
     //     { text: 'Hi,My name is Alronard,you can call me Alro,What can I do for you？', sender: 'robot', needInput:false }]
     // );
     const [messages, setMessages] = useState([
-        { text: '你好，我是Alronald，欢迎来到员工论坛', sender: 'robot', needInput:true }]
+        { text: '你好，我是Alronald，欢迎来到职业发展中心，为您推荐一些最热的帖子', sender: 'robot', needInput:true }]
     );
     const [socket, setSocket] = useState(null);
     const currentQuestion = useRef('')
@@ -62,8 +62,10 @@ export default function ChatHtml(props) {
           }
     }
     const submitQuestions = () => {
-        console.log(currentQuestion.current)
-        socket.send(currentQuestion.current);
+        // console.log(currentQuestion.current)
+        // socket.send(currentQuestion.current);
+        const currentMsg = { text: '为您查询到新番茄入职必须知道的事,添加评论与发帖者畅所欲言吧', sender: 'robot', needInput: false, isView: true };
+        setMessages([...messages,currentMsg])
     }
     return (
         <>
@@ -71,7 +73,25 @@ export default function ChatHtml(props) {
                 <div className="chat-container">
                     <div className="chat-text">
                         <div className="intro-container" style={{textAlign:messages[messages?.length - 1].needInput ? 'left' : 'center'}}>{messages[messages?.length - 1].text}</div>
+                        {messages[messages?.length - 1].isView ? 
                         <div className="forum-container">
+                            <div className="forum-list" >
+                                <div className="list-item" style={{borderTop:0}}>
+                                    <div style={{display:'flex'}}>
+                                        <img src="/pic/head.png" />
+                                        <div className="qs-container">
+                                            <p>小伙伴们看过来，关于新番茄报道指南，你想知道的都在这里！</p>
+                                            <p style={{fontWeight:400}}>汉堡大学 &nbsp;&nbsp;&nbsp;22分钟前  &nbsp;&nbsp;&nbsp; <a style={{color:'green'}}>交流</a></p>
+                                        </div>
+                                    </div>
+                                    <div className="qs-container">
+                                        <p style={{fontSize:'12px'}}>点赞 <span style={{color:'#db0007'}}>999+</span></p>
+                                        <p style={{fontSize:'12px'}}>评论 <span style={{color:'#db0007'}}>999+</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        :<div className="forum-container">
                             <div className="tab-container">
                                 <p>最新</p>
                                 <p>最热</p>
@@ -82,7 +102,7 @@ export default function ChatHtml(props) {
                                         <img src="/pic/head.png" />
                                         <div className="qs-container">
                                             <p>小伙伴们看过来，关于餐厅升迁路径，你想知道的都在这里！</p>
-                                            <p style={{fontWeight:400}}>南方小土豆 &nbsp;&nbsp;&nbsp;22分钟前  &nbsp;&nbsp;&nbsp; <a style={{color:'green'}}>交流</a></p>
+                                            <p style={{fontWeight:400}}>汉堡大学 &nbsp;&nbsp;&nbsp;22分钟前  &nbsp;&nbsp;&nbsp; <a style={{color:'green'}}>交流</a></p>
                                         </div>
                                     </div>
                                     <div className="qs-container">
@@ -95,7 +115,7 @@ export default function ChatHtml(props) {
                                         <img src="/pic/head.png" />
                                         <div className="qs-container">
                                             <p>宝藏学习平台等你发现，开启你的专属技能提升通道吧~</p>
-                                            <p style={{fontWeight:400}}>汉堡大学 &nbsp;&nbsp;&nbsp;22分钟前  &nbsp;&nbsp;&nbsp; <a style={{color:'green'}}>交流</a></p>
+                                            <p style={{fontWeight:400}}>汉堡大学 &nbsp;&nbsp;&nbsp;32分钟前  &nbsp;&nbsp;&nbsp; <a style={{color:'green'}}>交流</a></p>
                                             
                                         </div>
                                     </div>
@@ -109,7 +129,7 @@ export default function ChatHtml(props) {
                                         <img src="/pic/head.png" />
                                         <div className="qs-container">
                                             <p>1年成为RGM，我是如何做到的...</p>
-                                            <p style={{fontWeight:400}}>员工小美 &nbsp;&nbsp;&nbsp;22分钟前  &nbsp;&nbsp;&nbsp; <a style={{color:'green'}}>交流</a></p>
+                                            <p style={{fontWeight:400}}>员工小美 &nbsp;&nbsp;&nbsp;45分钟前  &nbsp;&nbsp;&nbsp; <a style={{color:'green'}}>交流</a></p>
                                         </div>
                                     </div>
                                     <div className="qs-container">
@@ -119,6 +139,7 @@ export default function ChatHtml(props) {
                                 </div>
                             </div>
                         </div>
+                        }
                         {messages[messages?.length - 1].needInput && 
                         <div className="search-container">
                             <textarea className="search-textarea" onChange={handleInputChange} style={{height:textareaHeight+'rem'}} />

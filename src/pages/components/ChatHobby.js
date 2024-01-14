@@ -62,16 +62,41 @@ export default function ChatHtml(props) {
           }
     }
     const submitQuestions = () => {
-        console.log(currentQuestion.current)
-        socket.send(currentQuestion.current);
+        // console.log(currentQuestion.current)
+        // socket.send(currentQuestion.current);
+        const currentMsg = { text: '为您找到 薯条与书页俱乐部，请联系队长加入， \n 队长：Chelsea Chen \n 成员：Carrie、Francis、Canon... \n 近期活动照片：', sender: 'robot', needInput: false, isView: true };
+        setMessages([...messages,currentMsg])
     }
     return (
         <>
             {props.chatShow && <div className="chat-parent">
                 <div className="chat-container">
                     <div className="chat-text">
-                        <div className="intro-container" style={{textAlign:messages[messages?.length - 1].needInput ? 'left' : 'center'}}>{messages[messages?.length - 1].text}</div>
+                        <div className="intro-container" style={{textAlign:messages[messages?.length - 1].needInput ? 'left' : 'left'}}>{messages[messages?.length - 1].text}</div>
+                        {messages[messages?.length - 1].isView ? 
                         <div className="goods-list-container">
+                            <div className="goods-recommed">
+                                <img src='/pic/Reading1.png' />
+                                <p><span>7月活动照片</span></p>
+                            </div>
+                            <div className="goods-recommed">
+                                <img src='/pic/Reading2.png' />
+                                <p><span>8月活动照片</span></p>
+                            </div>
+                            <div className="goods-recommed">
+                                <img src='/pic/Reading3.png' />
+                                <p><span>9月活动照片</span></p>
+                            </div>
+                            <div className="goods-recommed">
+                                <img src='/pic/Reading4.png' />
+                                <p><span>10月活动照片</span></p>
+                            </div>
+                            <div className="goods-recommed">
+                                <img src='/pic/Reading5.png' />
+                                <p><span>11月活动照片</span></p>
+                            </div>
+                        </div>
+                        : <div className="goods-list-container">
                             <div className="goods-recommed">
                                 <img src='/pic/cycling.png' />
                                 <p><span>骑行俱乐部</span></p>
@@ -92,7 +117,7 @@ export default function ChatHtml(props) {
                                 <img src='/pic/basketball.jpg' />
                                 <p><span>篮球俱乐部</span></p>
                             </div>
-                        </div>
+                        </div>}
                         {messages[messages?.length - 1].needInput && 
                         <div className="search-container">
                             <textarea className="search-textarea" onChange={handleInputChange} style={{height:textareaHeight+'rem'}} />

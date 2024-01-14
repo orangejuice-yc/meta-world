@@ -13,7 +13,7 @@ export default function ChatHtml(props) {
     //     { text: 'Hi,My name is Alronard,you can call me Alro,What can I do for you？', sender: 'robot', needInput:false }]
     // );
     const [messages, setMessages] = useState([
-        { text: '你好，我是Alronald，欢迎来到麦麦二手商城，请问您想买点什么？为您推荐...', sender: 'robot', needInput:true }]
+        { text: '你好，我是Alronald，欢迎来到麦麦二手商城，请问您想买点什么？\n 为您推荐...', sender: 'robot', needInput:true }]
     );
     const [socket, setSocket] = useState(null);
     const currentQuestion = useRef('')
@@ -62,15 +62,41 @@ export default function ChatHtml(props) {
           }
     }
     const submitQuestions = () => {
-        console.log(currentQuestion.current)
-        socket.send(currentQuestion.current);
+        // console.log(currentQuestion.current)
+        // socket.send(currentQuestion.current);
+        const currentMsg = { text: '为您查询到以下与周杰伦CD相关的商品:', sender: 'robot', needInput: false, isView: true };
+        setMessages([...messages,currentMsg])
     }
     return (
         <>
             {props.chatShow && <div className="chat-parent">
                 <div className="chat-container">
                     <div className="chat-text">
-                        <div className="intro-container" style={{textAlign:messages[messages?.length - 1].needInput ? 'left' : 'center'}}>{messages[messages?.length - 1].text}</div>
+                        <div className="intro-container" style={{textAlign:messages[messages?.length - 1].needInput ? 'left' : 'left'}}>{messages[messages?.length - 1].text}</div>
+                        {messages[messages?.length - 1].isView ? 
+                        <div className="goods-list-container">
+                        <div className="goods-recommed">
+                            <img src='/pic/jay01.jpg' />
+                            <p><span>半兽人CD</span><span style={{color:'#db0007'}}>￥58.00</span></p>
+                        </div>
+                        <div className="goods-recommed">
+                            <img src='/pic/jay02.jpg' />
+                            <p><span>十一月的肖邦CD</span><span style={{color:'#db0007'}}>￥78.00</span></p>
+                        </div>
+                        <div className="goods-recommed">
+                            <img src='/pic/jay03.jpg' />
+                            <p><span>我很忙CD</span><span style={{color:'#db0007'}}>￥68.00</span></p>
+                        </div>
+                        <div className="goods-recommed">
+                            <img src='/pic/jay04.jpg' />
+                            <p><span>摩杰座CD</span><span style={{color:'#db0007'}}>￥88.00</span></p>
+                        </div>
+                        <div className="goods-recommed">
+                            <img src='/pic/jay05.jpg' />
+                            <p><span>八度空间CD</span><span style={{color:'#db0007'}}>￥88.00</span></p>
+                        </div>
+                    </div>
+                        :
                         <div className="goods-container">
                                 <div className="goods-item">电子产品</div>
                                 <div className="goods-item">运动健身</div>
@@ -82,24 +108,7 @@ export default function ChatHtml(props) {
                                 <div className="goods-item">运动健身</div>
                                 <div className="goods-item">···</div>
                         </div>
-                        <div className="goods-list-container">
-                            <div className="goods-recommed">
-                                <img src='/pic/jay01.jpg' />
-                                <p><span>半兽人CD</span><span style={{color:'#db0007'}}>￥58.00</span></p>
-                            </div>
-                            <div className="goods-recommed">
-                                <img src='/pic/jay02.jpg' />
-                                <p><span>十一月的肖邦CD</span><span style={{color:'#db0007'}}>￥78.00</span></p>
-                            </div>
-                            <div className="goods-recommed">
-                                <img src='/pic/jay03.jpg' />
-                                <p><span>我很忙CD</span><span style={{color:'#db0007'}}>￥68.00</span></p>
-                            </div>
-                            <div className="goods-recommed">
-                                <img src='/pic/jay04.jpg' />
-                                <p><span>摩杰座CD</span><span style={{color:'#db0007'}}>￥88.00</span></p>
-                            </div>
-                        </div>
+                        }
                         {messages[messages?.length - 1].needInput && 
                         <div className="search-container">
                             <textarea className="search-textarea" onChange={handleInputChange} style={{height:textareaHeight+'rem'}} />
