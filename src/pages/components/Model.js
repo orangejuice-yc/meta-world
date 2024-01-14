@@ -5,18 +5,18 @@ import { Physics, RigidBody } from '@react-three/rapier'
 import Controller from 'ecctrl'
 import { directive } from "@babel/types";
 import * as THREE from 'three';
-import ChatHtml from './Chat'
+
 
 
 export default function Model(props) {
 
   const keyboardMap = [
-    { name: 'forward', keys: ['ArrowUp'] },
-    { name: 'backward', keys: ['ArrowDown'] },
-    { name: 'leftward', keys: ['ArrowLeft'] },
-    { name: 'rightward', keys: ['ArrowRight'] },
-    { name: 'jump', keys: ['Space'] },
-    { name: 'run', keys: ['Shift'] },
+    // { name: 'forward', keys: ['ArrowUp'] },
+    // { name: 'backward', keys: ['ArrowDown'] },
+    // { name: 'leftward', keys: ['ArrowLeft'] },
+    // { name: 'rightward', keys: ['ArrowRight'] },
+    // { name: 'jump', keys: ['Space'] },
+    // { name: 'run', keys: ['Shift'] },
   ]
 
   const titleRef1 = useRef();
@@ -232,7 +232,7 @@ export default function Model(props) {
 
   const characterRef = useRef();
   const [previousPosition, setPreviousPosition] = useState({ x: 0, y: 0, z: 0 });
-  const [chatShow, setChatShow] = useState(false)
+
   const [textPlaqueList, setTextPlaqueList] = useState(TextPlaqueList);
   const [tomatoPosition,setTomatoPosition] = useState(null)
   const [tomatoRotation,setTomatoRotation] = useState(null)
@@ -309,7 +309,7 @@ export default function Model(props) {
   const startChat = () => {
     console.log('startchat', bubbleRef1)
     // props.TogoCameraView([5.5, 2.5, -1])
-    setChatShow(true)
+    props.setChatShow(true)
   }
 
   return (
@@ -349,9 +349,6 @@ export default function Model(props) {
             )
           }
         </mesh>}
-
-      {props.isZoomIn && <ChatHtml chatShow={chatShow} setChatShow={setChatShow} />}
-
       {/* 文字牌 */}
       {!props.isZoomIn && <mesh>
         {TextPlaqueList?.map((item, index) =>

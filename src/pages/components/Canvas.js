@@ -6,7 +6,7 @@ import Model from './Model'
 import Env from './Env'
 
 
-export default function CanvasMap({isAutoRotate,cameraFov,cameraPosition,setAutoRotate,TogoCameraView,isZoomIn,SetZoomIn}) {
+export default function CanvasMap({isAutoRotate,cameraFov,cameraPosition,setAutoRotate,TogoCameraView,isZoomIn,SetZoomIn,chatShow,setChatShow}) {
   const cameraControll = useRef()
   const cameraRef = useRef()
   
@@ -26,7 +26,7 @@ export default function CanvasMap({isAutoRotate,cameraFov,cameraPosition,setAuto
         {/* some blue : #6da2dd,#65c2ef #78cef9 */}
         <color attach="background" args={['#64a1dd']} /> 
         
-        <Model TogoCameraView={TogoCameraView} cameraFov={cameraFov} cameraRef={cameraRef} cameraControll={cameraControll} setAutoRotate={setAutoRotate} isZoomIn={isZoomIn} SetZoomIn={SetZoomIn}/>
+        <Model TogoCameraView={TogoCameraView} cameraFov={cameraFov} cameraRef={cameraRef} cameraControll={cameraControll} setAutoRotate={setAutoRotate} isZoomIn={isZoomIn} SetZoomIn={SetZoomIn} chatShow={chatShow} setChatShow={setChatShow} />
         <Env />
         
         <OrbitControls

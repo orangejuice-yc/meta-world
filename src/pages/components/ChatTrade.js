@@ -13,7 +13,7 @@ export default function ChatHtml(props) {
     //     { text: 'Hi,My name is Alronard,you can call me Alro,What can I do for you？', sender: 'robot', needInput:false }]
     // );
     const [messages, setMessages] = useState([
-        { text: '你好，我是Alronald，这里是麦麦树洞，畅所欲言吧', sender: 'robot', needInput:true }]
+        { text: '你好，我是Alronald，欢迎来到麦麦二手商城，请问您想买点什么？为您推荐...', sender: 'robot', needInput:true }]
     );
     const [socket, setSocket] = useState(null);
     const currentQuestion = useRef('')
@@ -71,14 +71,33 @@ export default function ChatHtml(props) {
                 <div className="chat-container">
                     <div className="chat-text">
                         <div className="intro-container" style={{textAlign:messages[messages?.length - 1].needInput ? 'left' : 'center'}}>{messages[messages?.length - 1].text}</div>
-                        <div className="booth-container">
-                            <div className="card">
-                                <p className="card-name">匿名:</p>
-                                <p className="card-content">家人们，谁懂啊，我被批评啦，求安慰</p>
+                        <div className="goods-container">
+                                <div className="goods-item">电子产品</div>
+                                <div className="goods-item">运动健身</div>
+                                <div className="goods-item">美妆个护</div>
+                                <div className="goods-item">爱宠用品</div>
+                                <div className="goods-item">零食饮品</div>
+                                <div className="goods-item">服装饰品</div>
+                                <div className="goods-item">图书音像</div>
+                                <div className="goods-item">运动健身</div>
+                                <div className="goods-item">···</div>
+                        </div>
+                        <div className="goods-container">
+                            <div className="goods-recommed">
+                                <img src='/pic/jay01.jpg' />
+                                <p><span>半兽人CD</span><span style={{color:'#db0007'}}>￥58.00</span></p>
                             </div>
-                            <div className="card">
-                                <p className="card-name">匿名:</p>
-                                <p className="card-content">家人们，谁懂啊，我被批评啦，求安慰</p>
+                            <div className="goods-recommed">
+                                <img src='/pic/jay02.jpg' />
+                                <p><span>十一月的肖邦CD</span><span style={{color:'#db0007'}}>￥78.00</span></p>
+                            </div>
+                            <div className="goods-recommed">
+                                <img src='/pic/jay03.jpg' />
+                                <p><span>我很忙CD</span><span style={{color:'#db0007'}}>￥68.00</span></p>
+                            </div>
+                            <div className="goods-recommed">
+                                <img src='/pic/jay04.jpg' />
+                                <p><span>摩杰座CD</span><span style={{color:'#db0007'}}>￥88.00</span></p>
                             </div>
                         </div>
                         {messages[messages?.length - 1].needInput && 
