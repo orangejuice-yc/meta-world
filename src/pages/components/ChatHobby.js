@@ -13,7 +13,7 @@ export default function ChatHtml(props) {
     //     { text: 'Hi,My name is Alronard,you can call me Alro,What can I do for you？', sender: 'robot', needInput:false }]
     // );
     const [messages, setMessages] = useState([
-        { text: '你好，我是Alronald，欢迎来到兴趣社团，为您推荐...', sender: 'robot', needInput:true }]
+        { text: 'Hi，亲爱的麦胞，我是Alronald，欢迎来到兴趣社团，为您推荐...', sender: 'robot', needInput:true }]
     );
     const [socket, setSocket] = useState(null);
     const currentQuestion = useRef('')
@@ -125,8 +125,8 @@ export default function ChatHtml(props) {
  
                     </div>
                     <div className="chat-button">
-                        <div className="button-container button-grey" onClick={() => props.setChatShow(false)}>SEE YOU LATER</div>
-                        <div className="button-container button-blue" onClick={messages[messages?.length - 1]?.needInput ? submitQuestions : nextAnswer}>{messages[messages?.length - 1]?.needInput ? 'SUBMIT' : 'NEXT'}</div>
+                        <div className="button-container button-grey" onClick={() => props.setChatShow(false)}>再见啦</div>
+                        <div className="button-container button-blue" onClick={messages[messages?.length - 1]?.needInput ? submitQuestions : nextAnswer}>{messages[messages?.length - 1]?.needInput ? '提交问题' : 'NEXT'}</div>
                     </div>
                 </div>
             </div>}

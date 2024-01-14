@@ -2,7 +2,7 @@ import { useState,useRef } from 'react'
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei'
 import Canvas from './components/Canvas';
 import Overlay from './components/Overlay';
-import ChatHtml from './components/ChatTrade';
+import ChatHtml from './components/ChatTreehole';
 
 const wholeCameraPosition = [35, 25, 35]
 export default function World() {

@@ -84,8 +84,8 @@ export default function ChatHtml(props) {
                             
                     </div>
                     <div className="chat-button">
-                        <div className="button-container button-grey" onClick={() => props.setChatShow(false)}>SEE YOU LATER</div>
-                        <div className="button-container button-blue" onClick={messages[messages?.length - 1]?.needInput ? submitQuestions : nextAnswer}>{messages[messages?.length - 1]?.needInput ? 'SUBMIT' : 'NEXT'}</div>
+                        <div className="button-container button-grey" onClick={() => props.setChatShow(false)}>再见啦</div>
+                        <div className="button-container button-blue" onClick={messages[messages?.length - 1]?.needInput ? submitQuestions : nextAnswer}>{messages[messages?.length - 1]?.needInput ? '提交问题' : 'NEXT'}</div>
                     </div>
                 </div>
             </div>}

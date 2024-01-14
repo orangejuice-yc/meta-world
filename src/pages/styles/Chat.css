@@ -152,18 +152,39 @@
   .booth-container{
     display: flex;
     justify-content: space-around;
+    font-size: 16px;
     .card{
-      width:200px;
-      height:200px;
+      position: relative;
+      width:150px;
+      /* height:200px; */
       padding:16px;
       border:2px solid #1c228c;
       background:#fff;
       border-radius: 10px;
+      display: flex;
+    flex-direction: column;
+    justify-content: space-between;
       .card-name{
         text-align: left;
       }
       .card-content{
-        margin-top: 30px !important;
+        margin: 10px 0 !important;
+        text-align: justify;
+      }
+      .card-operate{
+        text-align: right;
+      }
+      .trend{
+        position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    z-index: 999;
+    border: 1px solid;
+    border-radius: 50%;
+    line-height: 40px;
+    top: -20px;
+    left: -20px;
       }
     }
   }
