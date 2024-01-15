@@ -20,24 +20,25 @@ export default function World() {
   const cameraFov = useRef(65)
 
   const [chatShow, setChatShow] = useState(false)
-
-  // const chatHtmlList = [
-  //   <ChatHtml1 chatShow={chatShow} setChatShow={setChatShow} />,
-  //   <ChatHtml2 chatShow={chatShow} setChatShow={setChatShow} />,
-  //   <ChatHtml3 chatShow={chatShow} setChatShow={setChatShow} />,
-  //   <ChatHtml4 chatShow={chatShow} setChatShow={setChatShow} />,
-  //   <ChatHtml5 chatShow={chatShow} setChatShow={setChatShow} />,
-  //   <ChatHtml6 chatShow={chatShow} setChatShow={setChatShow} />
-  // ];
+  const [num, setNum] = useState(0);
+  
+  const chatHtmlList = [
+    <ChatHtml1 chatShow={chatShow} setChatShow={setChatShow} />,
+    <ChatHtml2 chatShow={chatShow} setChatShow={setChatShow} />,
+    <ChatHtml3 chatShow={chatShow} setChatShow={setChatShow} />,
+    <ChatHtml4 chatShow={chatShow} setChatShow={setChatShow} />,
+    <ChatHtml5 chatShow={chatShow} setChatShow={setChatShow} />,
+    <ChatHtml6 chatShow={chatShow} setChatShow={setChatShow} />
+  ];
   const TogoCameraView = (position) => {
     setCameraPosition(position)
     setAutoRotate(false)
   }
   return (
     <div className='world-container'>
-      <Canvas isAutoRotate={isAutoRotate} cameraFov={cameraFov} cameraPosition={cameraPosition} setAutoRotate={setAutoRotate} TogoCameraView={TogoCameraView} isZoomIn={isZoomIn} SetZoomIn={setZoomIn} chatShow={chatShow} setChatShow={setChatShow}/>
+      <Canvas isAutoRotate={isAutoRotate} cameraFov={cameraFov} cameraPosition={cameraPosition} setAutoRotate={setAutoRotate} TogoCameraView={TogoCameraView} isZoomIn={isZoomIn} SetZoomIn={setZoomIn} chatShow={chatShow} setChatShow={setChatShow} setNum={setNum}/>
       <Overlay setAutoRotate={setAutoRotate} cameraFov={cameraFov} isZoomIn={isZoomIn} SetZoomIn={setZoomIn} TogoCameraView={TogoCameraView} chatShow={chatShow} />
-      {isZoomIn && chatShow && <ChatHtml chatShow={chatShow} setChatShow={setChatShow} />}
+      {isZoomIn && chatShow && chatHtmlList[num]}
     </div>
   )
 }

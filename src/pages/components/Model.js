@@ -286,17 +286,16 @@ export default function Model(props) {
   });
 
   const clickTitleRef = (event,item) => {
-    event.stopPropagation();
-    // console.log('item',item)
+    console.log('item',item)
     props.SetZoomIn(true)
-    props.setAutoRotate(false)
+    // props.setAutoRotate(false)
     setTomatoPosition(item.tomatoPosition)
     setTomatoRotation(item.tomatoRotation)
-    // props.TogoCameraView(item.cameraPosition)
+    props.TogoCameraView(item.cameraPosition)
     
 
     // 让相机看向指定的点
-    props.cameraRef.current.position.set(item.cameraPosition[0],item.cameraPosition[1],item.cameraPosition[2]);
+    // props.cameraRef.current.position.set(item.cameraPosition[0],item.cameraPosition[1],item.cameraPosition[2]);
     props.cameraFov.current = item.fov;
     // const position = new THREE.Vector3(item.tomatoPosition[0],item.tomatoPosition[1],item.tomatoPosition[2]);
 
@@ -306,8 +305,9 @@ export default function Model(props) {
     // console.log('cameraRef.current',props.cameraRef.current);
   }
 
-  const startChat = (item) => {
-    console.log(item)
+  const startChat = (index) => {
+    console.log(index)
+    props.setNum(index)
     props.setChatShow(true)
   }
 
@@ -339,7 +339,7 @@ export default function Model(props) {
                   ref={item.bubbleRef}
                   onPointerOver={(event) => { item.setHover(true) }}
                   onPointerOut={(event) => item.setHover(false)}
-                  onClick={() => startChat(item)}
+                  onClick={(e) => startChat(index)}
                   position={item.bubblePosition} rotation={item.bubbleRotation} scale={0.3} src={item.hoverd ? item.hoverdGlb : item.defaultGlb} />
                 <Gltf
                   ref={item.robotRef}
