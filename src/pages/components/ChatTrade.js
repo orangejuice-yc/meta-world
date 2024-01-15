@@ -13,7 +13,7 @@ export default function ChatHtml(props) {
     //     { text: 'Hi,My name is Alronard,you can call me Alro,What can I do for you？', sender: 'robot', needInput:false }]
     // );
     const [messages, setMessages] = useState([
-        { text: 'Hi，亲爱的麦胞，我是Alronald，欢迎来到麦麦二手商城，请问您想买点什么？\n 为您推荐...', sender: 'robot', needInput:true }]
+        { text: 'Hi，亲爱的麦胞，我是Alronald，欢迎来到麦麦商城，请问您想买点什么？\n 为您推荐...', sender: 'robot', needInput:true }]
     );
     const [socket, setSocket] = useState(null);
     const currentQuestion = useRef('')
@@ -111,7 +111,7 @@ export default function ChatHtml(props) {
                         }
                         {messages[messages?.length - 1].needInput && 
                         <div className="search-container">
-                            <textarea className="search-textarea" onChange={handleInputChange} style={{height:textareaHeight+'rem'}} />
+                            <textarea className="search-textarea" placeholder='查询你想要买的东西吧' onChange={handleInputChange} style={{height:textareaHeight+'rem'}} />
                         </div>}
  
                     </div>

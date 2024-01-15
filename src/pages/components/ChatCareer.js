@@ -142,7 +142,7 @@ export default function ChatHtml(props) {
                         }
                         {messages[messages?.length - 1].needInput && 
                         <div className="search-container">
-                            <textarea className="search-textarea" onChange={handleInputChange} style={{height:textareaHeight+'rem'}} />
+                            <textarea className="search-textarea" placeholder="查询与职业发展相关的帖子吧~" onChange={handleInputChange} style={{height:textareaHeight+'rem'}} />
                         </div>}
  
                     </div>

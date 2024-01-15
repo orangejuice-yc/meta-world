@@ -14,7 +14,7 @@ export default function ChatHtml(props) {
     //     { text: 'Hi,My name is Alronard,you can call me Alro,What can I do for you？', sender: 'robot', needInput:false }]
     // );
     const [messages, setMessages] = useState([
-        { text: '您好，我是Alronald，这里是企业文化中心，请问有什么可以帮助您', sender: 'robot', needInput:true }]
+        { text: '您好，我是Alronald，这里是企业文化中心，请问有什么可以帮助您？', sender: 'robot', needInput:true }]
     );
     const [socket, setSocket] = useState(null);
     const currentQuestion = useRef('')
@@ -75,11 +75,11 @@ export default function ChatHtml(props) {
                     <div className="chat-text">
                         <div className="intro-container" style={{textAlign:messages[messages?.length - 1].needInput ? 'left' : 'center'}}>
                             {messages[messages?.length - 1].text}
-                            {messages[messages?.length - 1].isView && <a onClick={() =>  navigate('/culture')} style={{color:'green'}}>查看</a>}
+                            {messages[messages?.length - 1].isView && <a onClick={() =>  window.open('/culture')} style={{color:'green'}}>查看</a>}
                         </div>
                         {messages[messages?.length - 1].needInput && 
                         <div className="search-container">
-                            <textarea className="search-textarea" onChange={handleInputChange} style={{height:textareaHeight+'rem'}} />
+                            <textarea className="search-textarea" placeholder="查询你感兴趣的企业文化相关内容吧~" onChange={handleInputChange} style={{height:textareaHeight+'rem'}} />
                         </div>}
                             
                     </div>
