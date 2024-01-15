@@ -147,9 +147,9 @@ export default function Model(props) {
       title: '员工社团',
       engTitle: 'Hobby Clubs',
       ref: titleRef1,
-      fov:15,
+      fov:11,
       position: [-10, 9, 11],
-      cameraPosition:[20,0,-9],
+      cameraPosition:[18,0,-9],
       tomatoPosition:[-1,0,0],
       tomatoRotation:[0,0,0],
       defaultGlb: '/glb/title/HobbyClubsDefault.glb',
@@ -203,7 +203,7 @@ export default function Model(props) {
       title: '麦麦树洞',
       engTitle: 'Confession Booth',
       ref: titleRef5,
-      fov:10,
+      fov:11,
       position: [25, 9, -10],
       cameraPosition:[-10,0,7],
       tomatoPosition:[15, 0, 0],
@@ -291,12 +291,15 @@ export default function Model(props) {
     // props.setAutoRotate(false)
     setTomatoPosition(item.tomatoPosition)
     setTomatoRotation(item.tomatoRotation)
-    props.TogoCameraView(item.cameraPosition)
+    
     
 
     // 让相机看向指定的点
     // props.cameraRef.current.position.set(item.cameraPosition[0],item.cameraPosition[1],item.cameraPosition[2]);
     props.cameraFov.current = item.fov;
+    setTimeout(()=>{
+      props.TogoCameraView(item.cameraPosition)
+    },200)
     // const position = new THREE.Vector3(item.tomatoPosition[0],item.tomatoPosition[1],item.tomatoPosition[2]);
 
     // props.cameraRef.current.lookAt(position)
