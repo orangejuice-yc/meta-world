@@ -118,6 +118,88 @@
       background:#eee
     }
   }
+  .forum-detail-container{
+    max-height: 550px;
+    overflow-y: auto;
+    display:flex;
+    flex-direction: row;
+    .forum-topic{
+      width:150px;
+      border-right: 1px solid #ccc;
+      margin-right: 30px;
+      font-size: 16px;
+      /* position:fixed; */
+      .topic-container{
+        font-weight: 400;
+      }
+    }
+    .forum-detail{
+      width:100%;
+      max-height: 700px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      text-align: left;
+      .detail-title{
+        padding-bottom: 16px;
+        border-bottom: 1px solid #999;
+        margin-bottom: 10px !important;
+    }
+    .detail-tag{
+      font-size: 14px;
+      background: pink;
+      width: 60px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    .detail-content{
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      margin: 6px 0 !important;
+      img{
+        width:25px;
+        height:25px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 6px;
+      }
+    }
+      .detail-status{
+        text-align: right;
+        font-size:16px;
+      }
+      img{
+        width:250px
+      }
+      .add-comment{
+        width: 99%;
+    border: 1px dashed;
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px 0;
+      }
+      .comment-container{
+        font-size: 14px;
+        .comment-item{
+          .item-head{
+            display: flex;
+            align-items: center;
+            img{
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              margin-right:6px;
+            }
+          }
+          .item-text{
+            margin-left:26px !important
+          }
+        }
+      }
+    }
+  }
+
+
   .forum-container{
     font-size: 14px;
     .tab-container{
@@ -132,9 +214,10 @@
         border-top:1px solid #ccc;
         padding:10px 0;
         justify-content: space-between;
+        cursor:pointer;
         img{
           width: 45px;
-          height: 45px;
+          /* height: 45px; */
           border-radius: 50%;
           overflow: hidden;
           margin-right:10px;
