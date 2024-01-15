@@ -204,7 +204,7 @@ export default function Model(props) {
       engTitle: 'Confession Booth',
       ref: titleRef5,
       fov:10,
-      position: [16, 9, -10],
+      position: [25, 9, -10],
       cameraPosition:[-10,0,7],
       tomatoPosition:[15, 0, 0],
       tomatoRotation:[0,Math.PI/3,0],
@@ -287,7 +287,7 @@ export default function Model(props) {
 
   const clickTitleRef = (event,item) => {
     event.stopPropagation();
-    console.log('item',item)
+    // console.log('item',item)
     props.SetZoomIn(true)
     props.setAutoRotate(false)
     setTomatoPosition(item.tomatoPosition)
@@ -302,13 +302,12 @@ export default function Model(props) {
 
     // props.cameraRef.current.lookAt(position)
 
-    console.log('cameraControll.current',props.cameraControll.current);
-    console.log('cameraRef.current',props.cameraRef.current);
+    // console.log('cameraControll.current',props.cameraControll.current);
+    // console.log('cameraRef.current',props.cameraRef.current);
   }
 
-  const startChat = () => {
-    console.log('startchat', bubbleRef1)
-    // props.TogoCameraView([5.5, 2.5, -1])
+  const startChat = (item) => {
+    console.log(item)
     props.setChatShow(true)
   }
 
@@ -340,7 +339,7 @@ export default function Model(props) {
                   ref={item.bubbleRef}
                   onPointerOver={(event) => { item.setHover(true) }}
                   onPointerOut={(event) => item.setHover(false)}
-                  onClick={startChat}
+                  onClick={() => startChat(item)}
                   position={item.bubblePosition} rotation={item.bubbleRotation} scale={0.3} src={item.hoverd ? item.hoverdGlb : item.defaultGlb} />
                 <Gltf
                   ref={item.robotRef}

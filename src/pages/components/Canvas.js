@@ -22,7 +22,7 @@ export default function CanvasMap({isAutoRotate,cameraFov,cameraPosition,setAuto
           near={0.1}  // 设置近裁剪面
           far={100}  // 设置远裁剪面
         />
-        <axesHelper args={[500]} />
+        {/* <axesHelper args={[500]} /> */}
         {/* some blue : #6da2dd,#65c2ef #78cef9 */}
         <color attach="background" args={['#64a1dd']} /> 
         
